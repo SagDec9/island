@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" y2="1">
+      <stop style="stop-color:#4b6cb7;" />
+      <stop style="stop-color:#182848;" offset="1" />
+    </linearGradient>
+  </defs>
+  <g>
+    <rect width="1200" height="675" fill="url(#bg)" />
+    <image x="72" y="270" width="115" href="https://wsrv.nl/?url=github.com/isYangs.png&amp;mask=circle" />
+    <text fill="#ffffff" font-family="Inter" font-size="48">
+      <tspan x="240" y="300" font-size="36" opacity=".5">isYangs</tspan>
+      <tspan x="240" y="380">{{line1}}</tspan>
+      <tspan x="240" y="460">{{line2}}</tspan>
+    </text>
+  </g>
+</svg>

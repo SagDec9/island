@@ -1,0 +1,40 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 7432dd6f44ccbe0d7408659d3478c79ae018c551..9992aeaf6f13703fa48e4215703f36093a58d8e0 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -27,7 +27,7 @@ function handlerLink(options) {
+       if (!url?.match(/^https?:\/\//))
+         return false;
+       text || (text = url.replace(reHtmlProtocol, ""));
+-      imageUrl || (imageUrl = `https://favicon.yandex.net/favicon/${new URL(url || "").hostname}`);
++      imageUrl || (imageUrl = `https://unavatar.webp.se/${new URL(url || "").hostname}?w`);
+       return {
+         text,
+         link: url,
+@@ -52,14 +52,14 @@ function handlerGitHubAt() {
+         text: text || login.toUpperCase(),
+         link: link || `https://github.com/${login}`,
+         type: "github-at",
+-        imageUrl: `https://github.com/${login}.png`
++        imageUrl: `https://wsrv.nl/?url=github.com/${login}.png%3fsize=92`
+       };
+     },
+     postprocess(parsed) {
+       if (parsed.link.match(reGitHubScope) && parsed.type !== "github-at") {
+         const login = parsed.link.match(reGitHubScope)[1];
+-        if (!GITHUB_SPECIAL_ROUTES.includes(login) && parsed.imageUrl.startsWith("https://favicon.yandex.net"))
+-          parsed.imageUrl = `https://github.com/${login}.png`;
++        if (!GITHUB_SPECIAL_ROUTES.includes(login) && parsed.imageUrl.startsWith("https://unavatar.webp.se"))
++          parsed.imageUrl = `https://wsrv.nl/?url=github.com/${login}.png%3fsize=92`;
+       }
+     }
+   };
+@@ -99,7 +99,7 @@ function MarkdownItMagicLink(md, options = {}) {
+       resolved.link = state.md.normalizeLink(parsed.link);
+       resolved.class.push("markdown-magic-link", `markdown-magic-link-${parsed.type}`);
+       resolved.text || (resolved.text = resolved.link.replace(reHtmlProtocol, ""));
+-      resolved.imageUrl || (resolved.imageUrl = `https://favicon.yandex.net/favicon/${new URL(resolved.link || "").hostname}`);
++      resolved.imageUrl || (resolved.imageUrl = `https://unavatar.webp.se/${new URL(resolved.link || "").hostname}`);
+       for (const handler of handlers)
+         resolved = handler.postprocess?.(resolved) || resolved;
+       for (const [regex, value] of options.imageOverrides || []) {
